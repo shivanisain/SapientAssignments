@@ -1,0 +1,109 @@
+(1).Write a query which displays the module code and the duration for modules whose duration is less than 6.
+
+Sol:    SELECT modulecode , duration FROM MODULES
+	where duration<6;
+
+
+(2).Write a query which will display the BATCHCODE, TRAINERID, COURSECODE, STARTDATE, CAPACITY and BATCHSTRENGTH of the batches handled by the trainer KRISHNAN.
+  
+Sol:	SELECT batchcode , batches.trainerid , coursecode ,startdate , capacity ,batchstrength
+	FROM  batches INNER JOIN trainers
+	ON (batches.trainer_id=trainers.trainer_id)
+	where trainername='KRISHAN';
+
+(3).Write a query which displays all the module names of the course code 100.
+
+Sol:	SELECT modulename 
+	From courseandmodules INNER JOIN modules
+	ON courseandmodules.modulecode = modules.modulecode
+	WHERE courseandmodules.coursecode = 100;
+
+(4).Write a query which displays the module names and course code for the course code 100.
+
+Sol:	SELECT courseandmodules.coursecode, modulename 
+	From courseandmodules INNER JOIN modules
+	ON courseandmodules.modulecode = modules.modulecode
+	WHERE courseandmodules.coursecode = 100;
+
+(5)."Write a query which will display the number of modules present in the course code 100. 
+<br/>
+
+Sol:	SELECT coursecode, COUNT(modulecode) as NumberofModules
+	From courseandmodules
+	GROUP BY coursecode;
+
+(6).Write a query which will display all the course code and the number of modules present in that particular course.
+
+Sol:	SELECT coursecode, COUNT(modulecode) as NumberofModules
+	From courseandmodules
+	GROUP BY coursecode;
+
+(7).Write a query which will display the course title and fees which has the maximum fees.
+
+Sol:	SELECT title, fees
+	FROM courses
+	WHERE fees = (SELECT MAX(fees) from courses);
+
+(8).Write a query which will display the student id, student name, batch code, place and 
+phone number of the students who belongs to Batch '3001'.
+
+Sol:	SELECT studentid, studentname, batchcode, place,  phone
+	FROM students
+	WHERE batchcode = 3001;
+
+(9).Write a Query which will display the student ID, Student name, Batch code, place and phone number who are from CHENNAI.
+
+Sol:	SELECT studentid, studentname, batchcode, place,  phone
+	FROM students
+	WHERE place = 'CHENNAI';
+
+(10).Write a query which displays the total number of modules which has less than 6 days duration. 
+
+Sol:	SELECT COUNT(modulecode) as LESSTHANSIXDAYS
+	FROM MODULES
+	WHERE duration<6;
+
+(11).Write a query to display the batch code, course title, start date of the batches for the month of May and year 2012.
+
+Sol:	SELECT batchcode, title, startdate
+	FROM batches INNER JOIN courses 
+	ON (batches.coursecode = courses.coursecode)
+	WHERE startdate > '2012-05-01' and startdate < '2012-05-30' ;
+
+(12).Write a query to display courses code, course title, course fees of the courses for which no batches/training has been planned in the month of January and year 2012.
+
+Sol:	SELECT courses.coursecode, title, fees
+	FROM courses FULL JOIN batches
+	ON (batches.coursecode = courses.coursecode)
+	WHERE courses.coursecode  NOT IN (
+				   SELECT coursecode
+				   FROM batches
+				   WHERE startdate >= '2012-01-01' and startdate <= '2012-01-30'
+                     		  );
+
+(13).Write a query which displays the names of all the modules of the course titled 'Oracle DBA'
+
+Sol:	SELECT modulename
+	From courseandmodules INNER JOIN modules
+	ON courseandmodules.modulecode = modules.modulecode
+	WHERE courseandmodules.coursecode = (
+					SELECT coursecode 
+					From courses
+					WHERE title = 'Oracle DBA'
+				    );
+
+(14).Write a Query which displays the student ID, Student name, Batch code, place and phone number of the student's who took training from CHENNAI in the year 2012.
+
+Sol:	SELECT studentid, studentname, students.batchcode, place,  phone, startdate
+	FROM students INNER JOIN batches
+	ON students.batchcode = batches.batchcode
+	WHERE place = 'CHENNAI' and startdate >= '2012-01-01' and startdate <= '2012-12-30';
+
+(15).Write a query which will display the student id, student names who are enrolled for the course code 200?
+
+Sol:	SELECT studentid, studentname
+	FROM students INNER JOIN batches
+	ON students.batchcode = batches.batchcode
+	WHERE batches.coursecode = 200;
+
+
