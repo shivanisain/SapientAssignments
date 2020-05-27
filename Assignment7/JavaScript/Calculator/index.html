@@ -1,0 +1,63 @@
+<html>
+<head>
+
+<title>Calculation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="stl.css">
+ <script src="javaScript.js"></script>
+</head>
+
+
+<body align="center">
+
+
+<div class="container-fluid">
+  <h1 align="center"> Calculator </h1><br><br>
+</div>
+
+
+<div class="form-group" >
+  <label for="num1">Enter the 1st Number:</label>
+  <!--<input type="number" class="form-control input-sm" id="num1" maxlength="2" size="2">-->
+  <input type="number" id="num1" name="num1" size="50"><br><br>
+</div>
+<div class="form-group">
+  <label for="num2">Enter the 2nd Number:</label>
+  <input type="number" id="num2" name="num2" size="50"><br><br>
+</div>
+
+<div class="form-check" align="center">
+  <label class="form-check-label" for="a">
+    <input type="radio" class="form-check-input" name="optradio" id="a">Addition
+  </label>
+</div>
+<div class="form-check" align="center">
+  <label class="form-check-label" for="s">
+    <input type="radio" class="form-check-input" name="optradio" id="s">Subtraction
+  </label>
+</div>
+<div class="form-check " align="center">
+  <label class="form-check-label" for="m">
+    <input type="radio" class="form-check-input" name="optradio" id="m">Multiplication
+  </label>
+</div>
+<div class="form-check" align="center">
+  <label class="form-check-label" for="d">
+    <input type="radio" class="form-check-input" name="optradio" id="d">Division
+  </label>
+</div>
+<br><br>
+<div class="form-group">
+  <label for="ans"><button type="button" class="btn btn-success" onclick="fun()">Answer</button></label>
+  The answer is : <h3 id="k"></h3>
+</div>
+
+
+</body>
+</html>
+
+
